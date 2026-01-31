@@ -3,6 +3,7 @@ export interface Friend {
     name: string;
     phone: string;
     age: number
+     dob?: Date;
 }
 
 export interface Colleague {
@@ -44,3 +45,10 @@ export type BuddyList = {
   members: Buddy[];
 };
 
+export type FriendPartial = Partial<Friend>
+// Type for gaining access to an event, e.g. concert.
+export type EventPass = Omit<Colleague, "contact"> & {
+  passCode : number;
+}
+// Immutable person type, based on Friend type.
+export type SecureFriendContact = Readonly<Pick<Friend,"name" | "phone" > >
